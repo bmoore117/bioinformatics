@@ -9,6 +9,7 @@ import scala.io.Source
 object Kmer {
   def main(args: Array[String]): Unit = {
     val lines = Source.fromFile("inputs/course1/kmer/input.txt").getLines().toArray
+    // trick is to wrap entire pattern in lookahead, so as not to consume the start position
     val regex = ("(?=" + lines(1) + ")").r
 
     println(regex.findAllMatchIn(lines(0)).length)
